@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    doaa
+                    project
                 </div>
 
                 <div class="links">
