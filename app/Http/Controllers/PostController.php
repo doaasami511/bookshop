@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Book;
-
 class PostController extends Controller
 {
     /**
@@ -15,9 +13,9 @@ class PostController extends Controller
     public function index()
     {
         $books = Book::orderBy('created_at','asc')->paginate(2);
+        
         return view('books.index')->with('books',$books);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +25,6 @@ class PostController extends Controller
     {
         return view('books.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +41,6 @@ class PostController extends Controller
             'count' => 'required',
             'category' => 'required',
         ]);
-
         $book = new Book;
         $book->title = $request->input('title');
         $book->author = $request->input('author');
@@ -53,10 +49,8 @@ class PostController extends Controller
         $book->category = $request->input('category');
         $book->description = $request->input('description');
         $book -> save();
-
         return redirect('/books')->with('success', 'Book Added');
     }
-
     /**
      * Display the specified resource.
      *
@@ -66,9 +60,10 @@ class PostController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
+        
         return view('books.show')->with('book',$book);
+        
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,7 +75,6 @@ class PostController extends Controller
         $Book = Book::find($id);
         return view('books.edit')->with('book',$Book);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -98,7 +92,6 @@ class PostController extends Controller
             'count' => 'required',
             'category' => 'required',
         ]);
-
         $book = Book::find($id);
         $book->title = $request->input('title');
         $book->author = $request->input('author');
@@ -107,10 +100,8 @@ class PostController extends Controller
         $book->category = $request->input('category');
         $book->description = $request->input('description');
         $book -> save();
-
         return redirect('/books')->with('success', 'Book Updated');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -121,7 +112,6 @@ class PostController extends Controller
     {
         $book = Book::find($id);
         $book -> delete();
-
         return redirect('/books')->with('success', 'Book Deleted');
     }
 }
