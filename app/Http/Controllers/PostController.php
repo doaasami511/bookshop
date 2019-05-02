@@ -102,7 +102,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -133,5 +133,10 @@ class PostController extends Controller
         $book = Book::find($id);
         $book -> delete();
         return redirect('/books')->with('success', 'Book Deleted');
+    }
+
+    public function gettitle_price(){
+        $books = Book::orderBy('created_at','asc')->paginate(2);
+        return view('person.mycart')->with('books',$books);
     }
 }
