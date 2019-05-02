@@ -13,6 +13,18 @@
 
 Route::get('/', 'PagesController@index');
 
+Route::get('/NotFound',function(){
+    return view ('pages.notfound');
+});
+
+Route::post('search', [
+    'uses' => 'PostController@search'
+  ]);
+
+Route::get('/mycart',function(){
+  return view('person.mycart');
+});
+
 Route::resource('books','PostController');
 
 Auth::routes();

@@ -10,6 +10,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $books = Book::orderBy('created_at','asc')->paginate(2);
@@ -64,6 +65,25 @@ class PostController extends Controller
         return view('books.show')->with('book',$book);
         
     }
+
+    public function search(request $request){
+
+        $title = $request->input('title');
+        if(is_numeric($title)){
+            $book = Book::find($title);
+        }else{
+            $column = 'title';
+            $book = Book::where($column , '=', $title)->first();
+        }
+        if(isset($book->id)){
+            $book = Book::find($book->id);
+            return view('books.show')->with('book',$book);
+        }
+        else{
+            return redirect('/NotFound');
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,7 +102,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
