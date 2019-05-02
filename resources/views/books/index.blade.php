@@ -21,7 +21,7 @@
 
 
 {!! Form::close() !!}
-
+<br>
 @if(isset(Auth::user()->name))
     @if(Auth::user()->name=='John Magdy')
         <a href="/books/create" style="float:right;color:white; border:solid 1px white;padding:5px;">Add new book</a>

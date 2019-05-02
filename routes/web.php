@@ -21,7 +21,7 @@ Route::post('search', [
     'uses' => 'PostController@search'
   ]);
 
-Route::get('/mycart','PostController@gettitle_price');
+Route::resource('/mycart','CartsController');
 
 Route::resource('books','PostController');
 

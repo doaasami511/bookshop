@@ -34,6 +34,13 @@
                         </li>
                     @endif
                 @endif
+                @if(isset(Auth::user()->name))
+                    @if(Auth::user()->name!='John Magdy')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/mycart">My cart</a>
+                        </li>
+                    @endif
+                @endif
 
             </ul>
             

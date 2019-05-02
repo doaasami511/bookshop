@@ -16,5 +16,10 @@
     @else
         <p>No requests found.</p>
     @endif
-    <h3><a href="/submitrequest" style="background-color:black;text-decoration:none;color:white;padding:0.5%;border-radius:8px;float:right">Submit a request</a></h3>
+    @if(isset(Auth::user()->name))
+        <h3><a href="/request/create" style="background-color:white;text-decoration:none;color:black;padding:0.5%;border-radius:8px;float:right">Submit a request</a></h3>
+    @else
+        <h3><a href="/login" style="background-color:white;text-decoration:none;color:black;padding:0.5%;border-radius:8px;float:right">Submit a request</a></h3>
+    @endif
+    
 @endsection

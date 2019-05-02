@@ -134,9 +134,4 @@ class PostController extends Controller
         $book -> delete();
         return redirect('/books')->with('success', 'Book Deleted');
     }
-
-    public function gettitle_price(){
-        $books = Book::orderBy('created_at','asc')->paginate(2);
-        return view('person.mycart')->with('books',$books);
-    }
 }

@@ -8,7 +8,7 @@
             <p style="text-align:right;">Book ID : <b>{{$book->id}}</b></p>
             @if($book->count >= 1)
             <p style="text-align:right;">
-                <a style="padding:5px;text-decoration:none;border-radius: 6px;border:solid 1px black;color:black;text-align:center;display:inline-block;background-color:#d8f2c9;" href="">
+                <a style="padding:5px;text-decoration:none;border-radius: 6px;border:solid 0.4px black;color:white;text-align:center;display:inline-block;background-color:blue;" href="/mycart">
                     Buy Now
                     <br>
                     {{$book->price}} $

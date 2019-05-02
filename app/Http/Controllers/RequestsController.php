@@ -39,9 +39,17 @@ class RequestsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'auther' => 'required',
-            'version' => 'required',
             'requestedby' => 'required',
         ]);
+
+        $requestedbook = new Requestedbook;
+        $requestedbook->title = $request->input('title');
+        $requestedbook->auther = $request->input('auther');
+        $requestedbook->requestedby = $request->input('requestedby');
+        $requestedbook->version = 1;
+        
+        $requestedbook->save();
+        return redirect('/request')->with('success', 'Book Added');
     }
 
     /**
