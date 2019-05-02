@@ -17,3 +17,14 @@
         {{session('error')}}
     </div>
 @endif
+
+<!-- Eman -->
+@if(isset($msg))
+    {{$msg}}
+
+    @if(session('success'))
+    <div class="alert alert-sucess">
+	    {{session('success')}}
+    </div>
+    @endif
+@endif

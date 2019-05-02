@@ -18,6 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Eman -->
+    <meta charset="utf-8">
+		<title>acme</title>
+		<link rel="stylesheet"  href="/css/app.css">
+		<style>
+			.invalid-feedback{
+				display: block;
+				color: red
+			}
+		</style>
+
 </head>
 <body>
     @include('inc.navbar')
@@ -25,6 +37,9 @@
     <main class="py-4">
         <div class="container">
             @include('inc.messeges')
+            @if(Request::is('about'))
+                @include('inc.showcase')
+            @endif
             @yield('content')
         </div>
         </main>

@@ -32,3 +32,26 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('request','RequestsController');
+
+
+
+
+//Eman
+Route::get('/contact',['uses' => 'ContactMessageController@create']);
+
+Route::post('/contact',[
+	'uses' => 'ContactMessageController@store',
+	'as' =>'contact.store'
+  ]);
+
+Route::get('/messages',[
+	'uses' => 'ContactMessageController@getMessages',
+	]);
+
+Route::get('/about', function () {
+    return view('pages.about');
+});
+
+Route::get('/about', function () {
+    return view('pages.about');
+});

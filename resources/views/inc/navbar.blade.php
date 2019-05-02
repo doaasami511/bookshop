@@ -21,8 +21,20 @@
                 <a class="nav-link" href="/books">Books List</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/about">About</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+                </li>
+
+                @if(isset(Auth::user()->name))
+                    @if(Auth::user()->name=='John Magdy')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/messages">Messages</a>
+                        </li>
+                    @endif
+                @endif
+
             </ul>
             
             <!-- Right Side Of Navbar -->
