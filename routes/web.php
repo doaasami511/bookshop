@@ -21,9 +21,7 @@ Route::post('search', [
     'uses' => 'PostController@search'
   ]);
 
-Route::get('/mycart',function(){
-  return view('person.mycart');
-});
+Route::get('/mycart','PostController@gettitle_price');
 
 Route::resource('books','PostController');
 
@@ -32,8 +30,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('request','RequestsController');
-
-
 
 
 //Eman
